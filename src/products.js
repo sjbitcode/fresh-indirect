@@ -6,10 +6,10 @@ const items = {
       imageUrl: 'https://www.freshdirect.com/media/images/product/grocery_46/gro_thms_whlwhtmffn_z.jpg?lastModify=2017-06-30',
     },
     'SvI5mAbiJ6KNa5FAqucFgjViHAeXEeVGIGDkGw7J': {
-      name: 'Raisin Bran Cereal',
-      price: 3.00,
-      description: 'Healthy Cereal with lotsa fiber',
-      imageUrl: 'https://www.couponaholic.net/wp-content/uploads/2018/09/Kelloggs-Raisin-Bran-with-Banana-Cereal.jpg'
+      name: 'General Mills Honey Nut Cheerios Cereal',
+      price: 3.99,
+      description: 'You already know that Honey Nut Cheerios Naturally Flavored has the irresistible taste of golden honey, making it a family favorite. Something that everyone can smile about! (from General Mills)',
+      imageUrl: 'https://www.freshdirect.com/media/images/product/grocery_48/gro_cheerios_general_03_z.jpg?lastModify=2018-06-01'
     },
     'nXwnhlkE8zKqGKstgHXYCum7z14AOqand7RnPUrP': {
       name: "Driscoll's Jumbo Blueberries",
