@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "which next"
+    "dev": "next dev src --hostname 0.0.0.0 --port 3000"
   },
   "author": "",
   "license": "ISC",
