@@ -1,17 +1,16 @@
-const MainPage = ({storeName, products}) => (
+const MainPage = ({products}) => (
     <div>
       <p>Index page</p>
-      {storeName}
-      <ul>
+    <ul style={{listStyleType: 'none', padding: '0px'}}>
         {
-          Object.keys(products).map(key => {
+          Object.keys(products).map(key => 
             <li key={key}>
-              <p>Hi</p>
-              {/* <h2>{products[key].name}</h2>
+              <h2>{products[key].name}</h2>
               <p>{products[key].description}</p>
-              <strong>{products[key].price}</strong> */}
+              <img src={products[key].imageUrl} alt={products[key].name}/>
+              <strong>{products[key].price}</strong>
             </li>
-          })
+          )
         }
       </ul>
     </div>
