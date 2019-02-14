@@ -7,12 +7,16 @@ const Cart = ({cart, products}) => (
     </h2>
 
     {Object.keys(cart['items']).map(key =>
-      <div className="cart-product">
+      <div className="cart-product" key={key}>
 
         <img className="cart-product-img" src={products[key].imageUrl} />
 
         <p className="cart-product-name" key={key}>
           {products[key].name}
+        </p>
+
+        <p className="cart-product-price">
+          {products[key].price}
         </p>
 
         <strong className="cart-product-quantity">
@@ -34,6 +38,10 @@ const Cart = ({cart, products}) => (
       .cart-product-name {
         display: inline-block;
         margin: 0 20px 0 20px;
+      }
+
+      .cart-product-price {
+        color: red;
       }
 
       cart-product-quantity {
