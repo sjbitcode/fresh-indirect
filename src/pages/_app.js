@@ -23,6 +23,7 @@ export default class MyApp extends App {
         "YrT8dLMCCuO7EdWEI8pfvPzkKuWXNzyG8bEqVHyY": 2,
         "CVJ9BHrMCV3Dnztepzr4sFHXXbcKRw9Ceb2XyD2K": 1
       },
+      total: 0
     },
     products: {...items}
   }
