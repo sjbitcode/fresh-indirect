@@ -1,3 +1,5 @@
+import CartUpdate from '../components/CartUpdate'
+
 const MainPage = ({products, cart}) => {
   return (
     <div>
@@ -11,6 +13,7 @@ const MainPage = ({products, cart}) => {
               <p>{products[key].description}</p>
               <img src={products[key].imageUrl} alt={products[key].name} />
               <strong>{products[key].price}</strong>
+            <CartUpdate />
             </li>
           )
         }
