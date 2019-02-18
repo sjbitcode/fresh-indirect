@@ -28,6 +28,11 @@ export default class MyApp extends App {
     products: {...items}
   }
 
+  componentDidMount() {
+    // calculate cart total immediately
+    this.calculateCartTotals()
+  }
+
   /**
    * Calculate cart total.
    * Total is derived from item quantities and item prices from the cart.
