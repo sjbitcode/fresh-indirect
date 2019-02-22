@@ -1,10 +1,14 @@
 import React from 'react'
+import CartUpdate from '../components/CartUpdate'
+import { toCurrency } from '../helpers'
 
 const Cart = ({cart, products}) => (
   <div>
     <h2>
       Currently {Object.keys(cart['items']).length} items in your cart
     </h2>
+
+    <span>Total: {toCurrency(cart.total)}</span>
 
     {Object.keys(cart['items']).map(key =>
       <div className="cart-product" key={key}>

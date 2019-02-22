@@ -1,4 +1,5 @@
 import React from 'react'
+import { toCurrency } from '../helpers'
 
 const MAX = 99
 
@@ -12,27 +13,25 @@ class CartUpdate extends React.Component {
     this.quantityInput = React.createRef()
   }
 
+  componentWillMount() {
+    console.log(this.props)
+    this.setState({
+      total: this.props.product.price
+    })
+  }
+
   decrementQty = (e) => {
-    // increment value of input, not state!
     e.preventDefault()
-    console.log('DECREMENTED')
-    console.log(this.quantityInput.current)
-    console.log(this.quantityInput.current.value)
-    this.validateInput(parseInt(this.quantityInput.current.value) - 1)
+    this.validateInput(this.state.quantity - 1)
   }
   
   incrementQty = (e) => {
-    // increment value of input, not state!
     e.preventDefault()
-    console.log('INCREMENTED')
-    console.log(this.quantityInput.current)
-    console.log(this.quantityInput.current.value)
-    this.validateInput(parseInt(this.quantityInput.current.value) + 1)
+    this.validateInput(this.state.quantity + 1)
   }
 
   handleChange = (e) => {
     e.preventDefault()
-    console.log('INPUT CHANGED!')
     let val = parseInt(e.target.value) ? parseInt(e.target.value) : ""
 
     console.log(val)
@@ -50,22 +49,23 @@ class CartUpdate extends React.Component {
     }
 
     this.setState({
-      quantity: val
+      quantity: val,
+      total: val * this.props.product.price
     })
-    this.quantityInput.current.value = val
   }
 
   addToCart = (e) => {
     e.preventDefault()
     console.log('Added to cart!')
-    console.log('Quantity added to cart: ', this.refs.quantityNum.value)
+    console.log('Quantity added to cart: ', this.state.quantity)
+    this.props.addItem(this.props.productId, this.state.quantity)
   }
 
   inputBlur = (e) => {
-    console.log(e)
-    console.log('input Blurred')
-    console.log(e.target.value)
-    console.log(typeof(e.target.value))
+    // console.log(e)
+    // console.log('input Blurred')
+    // console.log(e.target.value)
+    // console.log(typeof(e.target.value))
     let val = e.target.value
     if (val === '' || val === ' ') {
       e.target.value = '1'
@@ -80,10 +80,11 @@ class CartUpdate extends React.Component {
       <div>
         <form className='qtyInput'>
           <button onClick={(e) => this.decrementQty(e)}>-</button>
-          <input ref={this.quantityInput} type="number" min="0" max="100" value={this.state.quantity} onChange={this.handleChange} onBlur={this.inputBlur}/>
+          <input type="number" min="0" max="100" value={this.state.quantity} onChange={this.handleChange} onBlur={this.inputBlur}/>
           <button onClick={(e) => this.incrementQty(e)}>+</button>
           <input type="submit" value="Add to Cart" onClick={this.addToCart} />
         </form>
+        <strong>Total: {toCurrency(this.state.total)}</strong>
 
         <style jsx>{`
         .qtyInput {

@@ -96,14 +96,14 @@ export default class MyApp extends App {
    * We assume that any ID that is received will return a product from the state.
   * @param {string} productId
   */
-  addItem = (productId) => {
+  addItem = (productId, quantity) => {
     const product = this.state.products[productId]
-    let newAmount = 1;
+    let newAmount = quantity
 
     // If the product exists in the cart, then
-    // just increment the existing quantity by 1.
+    // increment the existing quantity by quantity.
     if (productId in this.state.cart.items) {
-      newAmount = this.state.cart.items[productId] + 1
+      newAmount = this.state.cart.items[productId] + quantity
     }
 
     // Update state's cart items and total.
