@@ -1,0 +1,14 @@
+language: node_js
+
+node_js:
+  - "stable"
+
+script:
+  - echo "Tests done"
+
+notifications:
+  email:
+    recipients:
+      - sjbitcode@gmail.com
+    on_success: always
+    on_failure: always
