@@ -1,4 +1,4 @@
-### 🥗🍎 Fresh Indirect Grocery Store  🍞 🧀 
+### 🥗🍎 Freshly Grocery Store  🍞 🧀 
 
 This is a sample project made with Next.js.
 
