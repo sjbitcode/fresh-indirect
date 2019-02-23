@@ -14,7 +14,6 @@ class CartUpdate extends React.Component {
   }
 
   componentWillMount() {
-    console.log(this.props)
     this.setState({
       total: this.props.product.price
     })
@@ -33,10 +32,6 @@ class CartUpdate extends React.Component {
   handleChange = (e) => {
     e.preventDefault()
     let val = parseInt(e.target.value) ? parseInt(e.target.value) : ""
-
-    console.log(val)
-    console.log(typeof(val))
-
     this.validateInput(val)
   }
 
@@ -56,16 +51,10 @@ class CartUpdate extends React.Component {
 
   addToCart = (e) => {
     e.preventDefault()
-    console.log('Added to cart!')
-    console.log('Quantity added to cart: ', this.state.quantity)
     this.props.addItem(this.props.productId, this.state.quantity)
   }
 
   inputBlur = (e) => {
-    // console.log(e)
-    // console.log('input Blurred')
-    // console.log(e.target.value)
-    // console.log(typeof(e.target.value))
     let val = e.target.value
     if (val === '' || val === ' ') {
       e.target.value = '1'

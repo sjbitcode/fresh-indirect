@@ -11,7 +11,6 @@ const MainPage = ({products, cart, addItem}) => {
           Object.keys(products).map(key =>
             <li key={key}>
               <h2>{products[key].name}</h2>
-              {/* <p>{products[key].description}</p> */}
               <img src={products[key].imageUrl} alt={products[key].name} />
               <strong>{products[key].price}</strong>
             <CartUpdate product={products[key]} productId={key} addItem={addItem}/>
