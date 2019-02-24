@@ -1,8 +1,6 @@
 import React from 'react'
 import App, { Container } from 'next/app'
-
 import Navbar from '../components/Navbar'
-
 import items from '../products'
 
 export default class MyApp extends App {
