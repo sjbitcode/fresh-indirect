@@ -1,9 +1,13 @@
 import React from 'react'
+import { Provider } from 'react-redux'
+import withRedux from 'next-redux-wrapper'
+
 import App, { Container } from 'next/app'
 import Navbar from '../components/Navbar'
 import items from '../products'
+import createReduxStore from '../store'
 
-export default class MyApp extends App {
+class MyApp extends App {
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {}
 
@@ -120,13 +124,17 @@ export default class MyApp extends App {
   }
 
   render () {
-    const { Component, pageProps } = this.props
+    const { Component, pageProps, store } = this.props
 
     return (
       <Container>
-        <Navbar storeName={this.state.storeName} />
-        <Component {...pageProps} {...this.state} addItem={this.addItem} />
+        <Provider store={store}>
+          <Navbar storeName={this.state.storeName} />
+          <Component {...pageProps} {...this.state} addItem={this.addItem} />
+        </Provider>
       </Container>
     )
   }
 }
+
+export default withRedux(createReduxStore)(MyApp)
