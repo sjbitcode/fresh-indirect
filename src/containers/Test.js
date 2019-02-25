@@ -10,6 +10,7 @@ const Test = (props) => {
       Hello
       <h2>{props.cart.total}</h2>
       <CartTotalTest updateCartTotal={props.updateCartTotal}/>
+      {/* <button onClick={() => props.dispatch(updateCartTotal())}>update total</button> */}
     </div>
   )
 }
@@ -19,6 +20,15 @@ const mapStateToProps = (state, ownProps) => ({
   ...ownProps
 })
 
-const mapDispatchToProps = {updateCartTotal}
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     incrementCart: () => dispatch(updateCartTotal())
+//   }
+// }
+const mapDispatchToProps = {
+  updateCartTotal
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Test)
+// export default connect(mapStateToProps)(Test)
+// export default connect()(Test)
