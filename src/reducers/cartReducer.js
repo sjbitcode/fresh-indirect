@@ -1,4 +1,4 @@
-import { ADD_CART_ITEM, REMOVE_CART_ITEM } from '../actions/cart'
+import { ADD_CART_ITEM, REMOVE_CART_ITEM, SET_ITEM_QUANTITY } from '../actions/cart'
 
 const initialState = {
   items: {
@@ -23,6 +23,15 @@ const addItemToCart = (state, productId, quantity) => {
   })
 }
 
+const setItemQuantity = (state, productId, quantity) => {
+  return Object.assign({}, state, {
+    items: {
+      ...state.items,
+      [productId]: quantity
+    }
+  })
+}
+
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_CART_ITEM:
@@ -31,6 +40,10 @@ const cartReducer = (state = initialState, action) => {
     case REMOVE_CART_ITEM:
       console.log(`Removed item with ID ${action.productId} (${action.quantity} quantity) to cart`)
       return state
+    
+    case SET_ITEM_QUANTITY:
+      console.log(`Setting item with ID ${action.productId} with quantity of ${action.quantity}`) 
+      return setItemQuantity(state, action.productId, action.quantity)
 
     default:
       return state
