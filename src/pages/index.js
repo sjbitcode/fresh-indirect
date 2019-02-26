@@ -1,15 +1,10 @@
-import CartUpdate from '../components/CartUpdate'
-import { toCurrency } from '../helpers'
-import ProductList from '../containers/ProductList'
-import Test from '../containers/Test'
+import ProductListContainer from '../containers/ProductListContainer'
 
-const MainPage = ({products, cart, addItem}) => {
+const MainPage = () => {
   return (
     <div>
       <p>Index page</p>
-      <h2>Cart total is: {toCurrency(cart.total)}</h2>
-      {/* <ProductList /> */}
-      <Test />
+      <ProductListContainer />
     </div>
   );
 }

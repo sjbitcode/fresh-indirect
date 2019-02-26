@@ -10,7 +10,6 @@ class CartUpdate extends React.Component {
       quantity: 1,
       total: 0
     }
-    this.quantityInput = React.createRef()
   }
 
   componentWillMount() {
@@ -51,7 +50,11 @@ class CartUpdate extends React.Component {
 
   addToCart = (e) => {
     e.preventDefault()
-    this.props.addItem(this.props.productId, this.state.quantity)
+    this.props.addToCart(
+      this.props.productId,
+      this.state.quantity,
+      this.state.total
+    )
   }
 
   inputBlur = (e) => {

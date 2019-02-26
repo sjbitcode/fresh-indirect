@@ -20,44 +20,44 @@ class MyApp extends App {
 
   state = {
     storeName: "Fresh Indirect",
-    cart: {
-      items: {
-        "YrT8dLMCCuO7EdWEI8pfvPzkKuWXNzyG8bEqVHyY": 2,
-        "CVJ9BHrMCV3Dnztepzr4sFHXXbcKRw9Ceb2XyD2K": 1
-      },
-      total: 0
-    },
-    products: {...items}
+    // cart: {
+    //   items: {
+    //     "YrT8dLMCCuO7EdWEI8pfvPzkKuWXNzyG8bEqVHyY": 2,
+    //     "CVJ9BHrMCV3Dnztepzr4sFHXXbcKRw9Ceb2XyD2K": 1
+    //   },
+    //   total: 0
+    // },
+    // products: {...items}
   }
 
   componentDidMount() {
     // calculate cart total immediately
-    this.calculateCartTotals()
+    // this.calculateCartTotals()
   }
 
   /**
    * Calculate cart total.
    * Total is derived from item quantities and item prices from the cart.
   */
-  calculateCartTotals = () => {
-    let newTotal = 0
+  // calculateCartTotals = () => {
+  //   let newTotal = 0
 
-    // Multiply each item's quantity in cart by product price.
-    Object.keys(this.state.cart.items).map(key => {
-      let price = this.state.products[key].price
-      let quantity = this.state.cart.items[key]
-      newTotal += price * quantity
-    })
+  //   // Multiply each item's quantity in cart by product price.
+  //   Object.keys(this.state.cart.items).map(key => {
+  //     let price = this.state.products[key].price
+  //     let quantity = this.state.cart.items[key]
+  //     newTotal += price * quantity
+  //   })
 
-    // Update state with new total.
-    this.setState({
-      ...this.state,
-      cart: {
-        ...this.state.cart,
-        total: newTotal
-      }
-    })
-  }
+  //   // Update state with new total.
+  //   this.setState({
+  //     ...this.state,
+  //     cart: {
+  //       ...this.state.cart,
+  //       total: newTotal
+  //     }
+  //   })
+  // }
 
   /**
   * Removes a product to cart.
@@ -65,31 +65,31 @@ class MyApp extends App {
   * We assume that any ID that is received will return a product from the state.
   * @param {string} productId
   */
-  removeItem = (productId) => {
-    let {items} = this.state.cart
+  // removeItem = (productId) => {
+  //   let {items} = this.state.cart
 
-    if (productId in items) {
+  //   if (productId in items) {
 
-      if (items[productId] > 1) {
-        items[productId] -= 1
-      }
-      else {
-        // delete item entirely if quantity equal to 1.
-        delete items[productId]
-      }
+  //     if (items[productId] > 1) {
+  //       items[productId] -= 1
+  //     }
+  //     else {
+  //       // delete item entirely if quantity equal to 1.
+  //       delete items[productId]
+  //     }
 
-      // Update state's cart items and total.
-      this.setState({
-        ...this.state,
-        cart: {
-          ...this.state.cart,
-          items: items
-        }
-      }, () => {
-        this.calculateCartTotals()
-      })
-    }
-  }
+  //     // Update state's cart items and total.
+  //     this.setState({
+  //       ...this.state,
+  //       cart: {
+  //         ...this.state.cart,
+  //         items: items
+  //       }
+  //     }, () => {
+  //       this.calculateCartTotals()
+  //     })
+  //   }
+  // }
 
 
   /**
@@ -98,30 +98,30 @@ class MyApp extends App {
    * We assume that any ID that is received will return a product from the state.
   * @param {string} productId
   */
-  addItem = (productId, quantity) => {
-    const product = this.state.products[productId]
-    let newAmount = quantity
+  // addItem = (productId, quantity) => {
+  //   const product = this.state.products[productId]
+  //   let newAmount = quantity
 
-    // If the product exists in the cart, then
-    // increment the existing quantity by quantity.
-    if (productId in this.state.cart.items) {
-      newAmount = this.state.cart.items[productId] + quantity
-    }
+  //   // If the product exists in the cart, then
+  //   // increment the existing quantity by quantity.
+  //   if (productId in this.state.cart.items) {
+  //     newAmount = this.state.cart.items[productId] + quantity
+  //   }
 
-    // Update state's cart items and total.
-    this.setState({
-      ...this.state,
-      cart: {
-        ...this.state.cart,
-        items: {
-          ...this.state.cart.items,
-          [productId]: newAmount
-        }
-      },
-    }, () => {
-      this.calculateCartTotals()
-    });
-  }
+  //   // Update state's cart items and total.
+  //   this.setState({
+  //     ...this.state,
+  //     cart: {
+  //       ...this.state.cart,
+  //       items: {
+  //         ...this.state.cart.items,
+  //         [productId]: newAmount
+  //       }
+  //     },
+  //   }, () => {
+  //     this.calculateCartTotals()
+  //   });
+  // }
 
   render () {
     const { Component, pageProps, store } = this.props
@@ -130,7 +130,8 @@ class MyApp extends App {
       <Container>
         <Provider store={store}>
           <Navbar storeName={this.state.storeName} />
-          <Component {...pageProps} {...this.state} addItem={this.addItem} />
+          {/* <Component {...pageProps} {...this.state} addItem={this.addItem} /> */}
+          <Component {...pageProps} {...this.state} />
         </Provider>
       </Container>
     )
