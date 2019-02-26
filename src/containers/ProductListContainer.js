@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { addToCart } from '../actions/cart'
-import CartUpdate from '../components/CartUpdate'
+import AddToCart from '../components/AddToCart'
 import { cartQuantity, cartTotal } from '../selectors/cart'
 
 
@@ -23,7 +23,7 @@ const ProductListContainer = ({ products, addToCart, cartQuantity, total}) => {
               <h2>{products[key].name}</h2>
               <img src={products[key].imageUrl} alt={products[key].name} />
               <strong>{products[key].price}</strong>
-              <CartUpdate product={products[key]} productId={key} addToCart={addToCart} />
+              <AddToCart product={products[key]} productId={key} addToCart={addToCart} />
             </li>
           )
         }

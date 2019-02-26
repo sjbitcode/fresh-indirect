@@ -3,7 +3,7 @@ import { toCurrency } from '../helpers'
 
 const MAX = 99
 
-class CartUpdate extends React.Component {
+class AddToCart extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -109,4 +109,4 @@ class CartUpdate extends React.Component {
   }
 }
 
-export default CartUpdate
+export default AddToCart
