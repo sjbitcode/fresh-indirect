@@ -8,10 +8,9 @@ export const addToCart = (productId, quantity) => ({
     quantity
 })
 
-export const removeFromCart = (productId, quantity) => ({
+export const removeFromCart = (productId) => ({
   type: REMOVE_CART_ITEM,
-  productId,
-  quantity
+  productId
 })
 
 export const setItemQuantity = (productId, quantity) => ({

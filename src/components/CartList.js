@@ -1,9 +1,11 @@
 import React from 'react'
+
+import DeleteFromCart from './DeleteFromCart'
 import CartUpdate from './CartUpdate'
 
 class CartList extends React.Component {
   render() {
-    const { items, products, setQuantity } = this.props
+    const { items, products, setQuantity, removeFromCart } = this.props
     return (
       <div>
         {Object.keys(items).map(key =>
@@ -26,6 +28,7 @@ class CartList extends React.Component {
             </div>
 
             <CartUpdate price={products[key].price} quantity={items[key]} setQuantity={setQuantity} productId={key}/>
+            <DeleteFromCart removeFromCart={removeFromCart} productId={key}/>
           </div>
         )}
 

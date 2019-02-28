@@ -2,7 +2,10 @@ import { ADD_CART_ITEM, REMOVE_CART_ITEM, SET_ITEM_QUANTITY } from '../actions/c
 
 const initialState = {
   items: {
-    "YrT8dLMCCuO7EdWEI8pfvPzkKuWXNzyG8bEqVHyY": 2
+    "YrT8dLMCCuO7EdWEI8pfvPzkKuWXNzyG8bEqVHyY": 2,
+    "SvI5mAbiJ6KNa5FAqucFgjViHAeXEeVGIGDkGw7J": 4,
+    "nXwnhlkE8zKqGKstgHXYCum7z14AOqand7RnPUrP": 1,
+    "uGtl5c7wMQ201i3dsOMNoxwZuo4XqnxDLY4UOJH3": 1
   }
 }
 
@@ -23,6 +26,21 @@ const addItemToCart = (state, productId, quantity) => {
   })
 }
 
+const removeItem = (state, productId) => {
+  // filter out item to removed
+  let newCart = Object.keys(state.items).reduce((obj, key) => {
+    if (key !== productId) {
+      obj[key] = state.items[key]
+    }
+    return obj
+  }, {})
+
+  return {
+    ...state,
+    items: newCart
+  }
+}
+
 const setItemQuantity = (state, productId, quantity) => {
   return Object.assign({}, state, {
     items: {
@@ -38,11 +56,9 @@ const cartReducer = (state = initialState, action) => {
       return addItemToCart(state, action.productId, action.quantity)
 
     case REMOVE_CART_ITEM:
-      console.log(`Removed item with ID ${action.productId} (${action.quantity} quantity) to cart`)
-      return state
+      return removeItem(state, action.productId)
     
     case SET_ITEM_QUANTITY:
-      console.log(`Setting item with ID ${action.productId} with quantity of ${action.quantity}`) 
       return setItemQuantity(state, action.productId, action.quantity)
 
     default:
