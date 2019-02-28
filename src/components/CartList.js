@@ -15,17 +15,15 @@ class CartList extends React.Component {
               {products[key].name}
             </p>
 
-            <p className="cart-product-price">
-              {products[key].price}
-            </p>
-
-            <strong className="cart-product-quantity">
-              {items[key]}
-            </strong>
-
-            <p className="cart-product-total">
-              Individual item total - ${items[key] * products[key].price}
-            </p>
+            <div>
+              <span className="cart-total-price">
+                ${items[key] * products[key].price}
+              </span>
+              <br/>
+              <span className="cart-product-price">
+                {products[key].price}/ea
+              </span>
+            </div>
 
             <CartUpdate price={products[key].price} quantity={items[key]} setQuantity={setQuantity} productId={key}/>
           </div>
@@ -44,6 +42,10 @@ class CartList extends React.Component {
           .cart-product-name {
             display: inline-block;
             margin: 0 20px 0 20px;
+          }
+
+          .cart-total-price {
+            font-size: 20px;
           }
 
           .cart-product-price {
