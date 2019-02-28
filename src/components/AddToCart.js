@@ -1,8 +1,6 @@
 import React from 'react'
 import { toCurrency } from '../helpers'
 
-const MAX = 99
-
 class AddToCart extends React.Component {
   constructor(props) {
     super(props)
