@@ -1,9 +1,9 @@
 import React from 'react'
+import CartUpdate from './CartUpdate'
 
 class CartList extends React.Component {
   render() {
-    console.log(this.props)
-    const { items, products } = this.props
+    const { items, products, setQuantity } = this.props
     return (
       <div>
         {Object.keys(items).map(key =>
@@ -26,6 +26,8 @@ class CartList extends React.Component {
             <p className="cart-product-total">
               Individual item total - ${items[key] * products[key].price}
             </p>
+
+            <CartUpdate price={products[key].price} quantity={items[key]} setQuantity={setQuantity} productId={key}/>
           </div>
         )}
 

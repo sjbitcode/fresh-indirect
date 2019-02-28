@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import CartList from '../components/CartList'
+import { setItemQuantity } from '../actions/cart'
 import { cartItems, cartQuantity, cartTotal, products } from '../selectors/cart'
 
-const CartContainer = ({ cartQuantity, cartTotal, products, cartItems}) => {
+const CartContainer = ({ cartQuantity, cartTotal, products, cartItems, setItemQuantity }) => {
   return (
     <div>
-      <CartList products={products} items={cartItems}/>
+      <CartList products={products} items={cartItems} setQuantity={setItemQuantity}/>
       <strong>Subtotal ({cartQuantity} items): {cartTotal}</strong>
     </div>
   )
@@ -19,4 +20,8 @@ const mapStateToProps = (state) => ({
   cartItems: cartItems(state)
 })
 
-export default connect(mapStateToProps)(CartContainer)
+const mapDispatchToProps = {
+  setItemQuantity
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartContainer)
