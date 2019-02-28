@@ -8,7 +8,10 @@ class AddToCart extends React.Component {
     super(props)
     this.state = {
       quantity: 1,
-      total: 0
+      total: 0,
+      min: 0,
+      max: 99,
+      default: 1
     }
   }
 
@@ -30,16 +33,22 @@ class AddToCart extends React.Component {
 
   handleChange = (e) => {
     e.preventDefault()
-    let val = parseInt(e.target.value) ? parseInt(e.target.value) : ""
-    this.validateInput(val)
+
+    // validate input value
+    let val = parseInt(e.target.value)
+    let re = RegExp('^[0-9]*$')
+
+    re.test(val) ? this.validateInput(val) : this.validateInput('')
   }
 
   validateInput = (val) => {
-    if (val < 0) {
-      val = 0
+    let { min, max } = this.state
+
+    if (val < min) {
+      val = min
     }
-    else if (val > MAX) {
-      val = MAX
+    else if (val > max) {
+      val = max
     }
 
     this.setState({
@@ -58,12 +67,12 @@ class AddToCart extends React.Component {
   }
 
   inputBlur = (e) => {
+    e.preventDefault()
+
+    // set value to default if input is empty or whitespace
     let val = e.target.value
     if (val === '' || val === ' ') {
-      e.target.value = '1'
-      this.setState({
-        quantity: 1
-      })
+      this.validateInput(this.state.default)
     }
   }
 
@@ -72,7 +81,7 @@ class AddToCart extends React.Component {
       <div>
         <form className='qtyInput'>
           <button onClick={(e) => this.decrementQty(e)}>-</button>
-          <input type="number" min="0" max="100" value={this.state.quantity} onChange={this.handleChange} onBlur={this.inputBlur}/>
+          <input type="number" value={this.state.quantity} onChange={this.handleChange} onBlur={this.inputBlur}/>
           <button onClick={(e) => this.incrementQty(e)}>+</button>
           <input type="submit" value="Add to Cart" onClick={this.addToCart} />
         </form>
