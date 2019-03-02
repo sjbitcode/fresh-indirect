@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 import DeleteFromCart from './DeleteFromCart'
 import CartUpdate from './CartUpdate'
@@ -11,11 +12,14 @@ class CartList extends React.Component {
         {Object.keys(items).map(key =>
           <div className="cart-product" key={key}>
 
-            <img className="cart-product-img" src={products[key].imageUrl} />
-
-            <p className="cart-product-name" key={key}>
-              {products[key].name}
-            </p>
+            <Link href={`/product?id=${key}`}>
+              <div id="product-link">
+                <img className="cart-product-img" src={products[key].imageUrl} />
+                <p className="cart-product-name" key={key}>
+                  {products[key].name}
+                </p>
+              </div>
+            </Link>
 
             <div>
               <span className="cart-total-price">
@@ -33,6 +37,10 @@ class CartList extends React.Component {
         )}
 
         <style jsx>{`
+          #product-link{
+            cursor: pointer;
+          }
+
           .cart-product {
             border: 1px solid black;
           }
